@@ -1,0 +1,49 @@
+.recharge-account-cell-component {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 54px;
+  background: #FFFFFF;
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ECECEC;
+    transform: scaleY(.5);
+  }
+  &:last-child::after {
+    height: 0;
+  }
+  .recharge-account-title {
+    flex-shrink: 0;
+    margin-right: 8px;
+    min-width: 54px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #222222;
+  }
+  .nut-input {
+    padding: 0;
+  }
+  .nut-input-left-box {
+    display: none;
+  }
+  .recharge-account-cell-placeholder {
+    font-size: 16px;
+    font-weight: normal;
+    color: #CCCCCC;
+  }
+  .recharge-account-cell-input {
+    font-size: 18px;
+    font-weight: 500;
+    color: #222222;
+    &::-webkit-input-placeholder {
+      font-size: 16px;
+      font-weight: normal;
+      color: #CCCCCC;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.country-infinite-list-component {
+  height: 100%;
+  .scroll-view-list, .scroll-view-body, .no-data-placeholder {
+    height: 100%;
+  }
+  .scroll-view-body {
+    padding: 12px 0;
+    box-sizing: border-box;
+    .no-more {
+      padding-bottom: 12px;
+    }
+  }
+}

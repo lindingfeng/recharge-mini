@@ -1,0 +1,37 @@
+.base-confirm-component {
+  position: relative;
+  padding: 30px 24px ;
+  width: 315px;
+  background-color: #FFFFFF;
+  background-image: linear-gradient(360deg, #FFFFFF 0%, #C6E6FF 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 80px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  .base-confirm-header {
+    .base-confirm-title {
+      text-align: center;
+      line-height: 28px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #000000;
+    }
+    .base-confirm-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 16px;
+    }
+    .icon-close {
+      width: 26px;
+      height: 26px;
+    }
+  }
+  .base-confirm-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+  }
+}

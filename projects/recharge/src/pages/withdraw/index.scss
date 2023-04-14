@@ -1,0 +1,10 @@
+.withdraw-list-page {
+  min-height: 100%;
+  background: linear-gradient(360deg,#F8FBFF 0%,#C6E6FF 100%) no-repeat;
+  .withdraw-body {
+    padding: 16px;
+  }
+  .no-data-placeholder {
+    height: 350px;
+  }
+}

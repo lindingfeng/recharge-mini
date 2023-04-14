@@ -1,0 +1,30 @@
+.recharge-phone-page {
+  min-height: 100%;
+  background: linear-gradient(360deg,#F8FBFF 0%,#C6E6FF 100%) no-repeat;
+  .recharge-phone {
+    padding: 16px 16px 60px;
+  }
+  .recharge-amount-button {
+    margin-top: 16px;
+  }
+  .recharge-tips {
+    font-size: 12px;
+    font-weight: bold;
+    color: #F22E2E;
+  }
+  .recharge-account-content {
+    text-align: center;
+    .recharge-account-title {
+      font-size: 16px;
+      color: #666666;
+      line-height: 22px;
+    }
+    .recharge-account-money {
+      margin-top: 16px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #218CFF;
+      line-height: 33px;
+    }
+  }
+}

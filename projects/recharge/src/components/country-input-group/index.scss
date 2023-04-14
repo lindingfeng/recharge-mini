@@ -1,0 +1,91 @@
+
+.country-input-group-component {
+  position: relative;
+  .country-input-group {
+    display: flex;
+    align-items: center;
+    padding: 0 18px 0 6px;
+    height: 44px;
+    background: rgba(255, 255, 255,0.5);
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    .select-country-body {
+      display: flex;
+      align-items: center;
+      padding: 0 10px 0 12px;
+      height: 32px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      .select-country-image {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+      }
+      .select-country-name {
+        font-size: 14px;
+        font-weight: bold;
+        color: #222222;
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .close-body {
+        flex-shrink: 0;
+        margin-left: 6px;
+        width: 20px;
+        height: 20px;
+      }
+      .close-image {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .input-body {
+      flex: 1;
+      .nut-input {
+        padding: 0 0 0 12px;
+        background-color: transparent;
+      }
+      .nut-input-left-box {
+        display: none;
+      }
+      .country-input-group-placeholder {
+        font-size: 14px;
+        font-weight: normal;
+        color: #666666;
+      }
+      .country-input-group-input {
+        font-size: 14px;
+        font-weight: 500;
+        color: #222222;
+        &::-webkit-input-placeholder {
+          font-size: 14px;
+          font-weight: normal;
+          color: #666666;
+        }
+      }
+    }
+    .down-image {
+      width: 24px;
+      height: 24px;
+      .icon-down {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .country-list-body {
+    position: absolute;
+    left: 0;
+    top: 52px;
+    z-index: 10;
+    width: 100%;
+    height: 400px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px 0px rgba(172,197,224,0.5);
+    border-radius: 12px;
+    overflow-y: scroll;
+  }
+}

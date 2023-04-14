@@ -1,0 +1,54 @@
+.recharge-custom-group-component {
+  padding: 16px;
+  margin-top: 12px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  .recharge-custom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    .recharge-custom-query {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #2496FF;
+      .icon-right {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .recharge-custom-body {
+    margin-top: 20px;
+    .nut-input {
+      padding: 0;
+    }
+    .nut-input-left-box {
+      display: none;
+    }
+    .recharge-custom-placeholder {
+      font-size: 16px;
+      font-weight: normal;
+      color: #CCCCCC;
+    }
+    .recharge-custom-input {
+      font-size: 18px;
+      font-weight: 500;
+      color: #222222;
+      &::-webkit-input-placeholder {
+        font-size: 16px;
+        font-weight: normal;
+        color: #CCCCCC;
+      }
+    }
+    .recharge-custom-tips {
+      margin-top: 22px;
+      font-size: 11px;
+      color: #999999;
+    }
+    .recharge-custom-button {
+      margin-top: 16px;
+    }
+  }
+}

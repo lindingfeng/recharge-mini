@@ -1,0 +1,28 @@
+.country-list-component {
+  .country-list {
+    padding: 0 24px;
+    .country-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 54px;
+      .country-image {
+        width: 30px;
+        height: 30px;
+      }
+      .country-name {
+        margin-left: 12px;
+        flex: 1;
+        font-size: 16px;
+        color: #222222;
+      }
+      .country-item-mask {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

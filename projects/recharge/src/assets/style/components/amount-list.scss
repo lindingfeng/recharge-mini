@@ -1,0 +1,113 @@
+.phone-amount-list-component,
+.flow-amount-list-component,
+.card-amount-list-component {
+  .phone-amount-list,
+  .flow-amount-list,
+  .card-amount-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .amount-placeholder {
+    display: flex;
+  }
+  .amount-loading, .amount-null {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3.2% 0;
+    width: 100%;
+    height: 194px;
+    .no-data {
+      text-align: center;
+      .icon-no-data {
+        width: 100px;
+        height: 100px;
+      }
+      .no-data-text {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #999999;
+      }
+    }
+  }
+  .recharge-amount-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+    color: #666666;
+    .title-label {
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+  .recharge-amount-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &.min {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .recharge-amount-item {
+    position: relative;
+    margin-top: 3.2%;
+    margin-left: 3.2%;
+    display: flex;
+    flex-direction: column;
+    width: 31.2%;
+    height: 97px;
+    background: #F2F8FE;
+    border-radius: 4px;
+    border: 1px solid #F2F8FE;
+    box-sizing: border-box;
+    overflow: hidden;
+    &.max {
+      height: 140px;
+      padding: 5px 5px 22px;
+    }
+    // 在百度小程序中使用nth-child计算错误
+    &:nth-of-type(3n+1) {
+      margin-left: 0;
+    }
+    .recharge-amount-num {
+      text-align: center;
+      font-size: 15px;
+      font-weight: bold;
+      color: #222222;
+    }
+    .recharge-amount-label {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #666666;
+    }
+    .icon-amount-select {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 16px;
+      height: 16px;
+    }
+    &.active {
+      border-color: rgba(33, 140, 255, .8);
+      .recharge-amount-title,
+      .recharge-amount-num,
+      .recharge-amount-label {
+        color: #218CFF;
+      }
+    }
+  }
+  &.disabled {
+    .recharge-amount-title,
+    .recharge-amount-child {
+      opacity: 0.5;
+    }
+  }
+}

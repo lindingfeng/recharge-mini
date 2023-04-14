@@ -1,0 +1,52 @@
+.recharge-traffic-cell-component {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  background: #FFFFFF;
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ECECEC;
+    transform: scaleY(.5);
+  }
+  .recharge-traffic-title {
+    flex-shrink: 0;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #222222;
+  }
+  .down-image {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    .icon-down {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .nut-input {
+    padding: 0;
+  }
+  .nut-input-left-box {
+    display: none;
+  }
+  .recharge-traffic-cell-placeholder {
+    font-size: 14px;
+    color: #CCCCCC;
+  }
+  .recharge-traffic-cell-input {
+    // 解决支付宝小程序文本下坠问题（window.enableInPageRenderInput = 'YES'时要去掉）
+    // height: auto;
+    font-size: 14px;
+    color: #222222;
+    &::-webkit-input-placeholder {
+      font-size: 14px;
+      color: #CCCCCC;
+    }
+  }
+}

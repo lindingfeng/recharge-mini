@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "workspaces": [
+    "projects/*"
+  ],
+  "scripts": {
+    "dev:recharge-h5": "yarn workspace @recharge/main run dev:h5",
+    "dev:recharge-tt": "yarn workspace @recharge/main run dev:tt",
+    "dev:recharge-jd": "yarn workspace @recharge/main run dev:jd",
+    "dev:recharge-qq": "yarn workspace @recharge/main run dev:qq",
+    "dev:recharge-swan": "yarn workspace @recharge/main run dev:swan",
+    "dev:recharge-weapp": "yarn workspace @recharge/main run dev:weapp",
+    "dev:recharge-alipay": "yarn workspace @recharge/main run dev:alipay",
+    "build:recharge-h5": "yarn workspace @recharge/main run build:h5",
+    "build:recharge-tt": "yarn workspace @recharge/main run build:tt",
+    "build:recharge-jd": "yarn workspace @recharge/main run build:jd",
+    "build:recharge-qq": "yarn workspace @recharge/main run build:qq",
+    "build:recharge-swan": "yarn workspace @recharge/main run build:swan",
+    "build:recharge-weapp": "yarn workspace @recharge/main run build:weapp",
+    "build:recharge-alipay": "yarn workspace @recharge/main run build:alipay"
+  }
+}

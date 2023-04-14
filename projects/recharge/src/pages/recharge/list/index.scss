@@ -1,0 +1,13 @@
+.recharge-list-page {
+  min-height: 100%;
+  background: linear-gradient(360deg,#F8FBFF 0%,#C6E6FF 100%) no-repeat;
+  .custom-recharge-list {
+    padding: 16px 0;
+    .no-data-content {
+      height: 350px;
+    }
+    .recharge-list {
+      padding: 0 16px;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+.card-amount-list-component {
+  display: flex;
+  flex-wrap: wrap;
+  .recharge-amount-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+    color: #666666;
+    .title-label {
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+  .recharge-amount-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .recharge-amount-item {
+    position: relative;
+    margin-top: 3.2%;
+    margin-left: 3.2%;
+    padding: 5px 5px 22px;
+    display: flex;
+    flex-direction: column;
+    width: 31.2%;
+    height: 144px;
+    background: #F2F8FE;
+    border-radius: 4px;
+    border: 1px solid #F2F8FE;
+    overflow: hidden;
+    &:nth-child(3n+1) {
+      margin-left: 0;
+    }
+    .recharge-amount-num {
+      font-size: 15px;
+      font-weight: bold;
+      color: #222222;
+    }
+    .recharge-amount-label {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #666666;
+    }
+    .icon-amount-select {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 16px;
+      height: 16px;
+    }
+    &.active {
+      border-color: rgba(33, 140, 255, .8);
+      .recharge-amount-title,
+      .recharge-amount-num,
+      .recharge-amount-label {
+        color: #218CFF;
+      }
+    }
+  }
+  &.disabled {
+    .recharge-amount-child {
+      opacity: 0.5;
+    }
+  }
+}

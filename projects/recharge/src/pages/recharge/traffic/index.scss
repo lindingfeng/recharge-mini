@@ -1,0 +1,33 @@
+.recharge-traffic-page {
+  min-height: 100%;
+  background: linear-gradient(360deg,#F8FBFF 0%,#C6E6FF 100%) no-repeat;
+  .recharge-traffic {
+    padding: 16px 16px 60px;
+  }
+  .recharge-traffic-button {
+    margin-top: 20px;
+    margin-bottom: 4px;
+  }
+  .nut-action-sheet__menu {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  .recharge-traffic-content {
+    .no-traffic {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 168px;
+      .icon-link {
+        width: 70px;
+        height: 70px;
+      }
+      .link-desc {
+        margin-top: 16px;
+        font-size: 16px;
+        color: #666666;
+      }
+    }
+  }
+}

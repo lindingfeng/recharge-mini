@@ -1,0 +1,36 @@
+{
+  "rules": [
+    {
+      "action": "disallow",
+      "page": "pages/cashier/index"
+    },
+    {
+      "action": "disallow",
+      "page": "pages/recharge/phone/index"
+    },
+    {
+      "action": "disallow",
+      "page": "pages/recharge/flow/index"
+    },
+    {
+      "action": "disallow",
+      "page": "pages/recharge/network-fix-nol/index"
+    },
+    {
+      "action": "disallow",
+      "page": "pages/recharge/card/index"
+    },
+    {
+      "action": "disallow",
+      "page": "pages/recharge/salik/index"
+    },
+    {
+      "action": "disallow",
+      "page": "pages/recharge/traffic/index"
+    },
+    {
+      "action": "disallow",
+      "page": "pages/promote/index"
+    }
+  ]
+}

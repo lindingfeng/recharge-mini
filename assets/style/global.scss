@@ -1,0 +1,19 @@
+/*
+ * 微信开发者工具
+ *  page如果设置100%会导致页面的canvas出现滚动fixed BUG
+*/
+page {
+  width: 100%;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFangSC", Microsoft YaHei, sans-serif;
+  font-size: 14px;
+}
+
+body {
+  font-size: 14px;
+}
+
+image {
+  border: 0;
+  vertical-align: top;
+}

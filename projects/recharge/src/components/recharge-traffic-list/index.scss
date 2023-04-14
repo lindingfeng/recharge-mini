@@ -1,0 +1,50 @@
+.recharge-traffic-list-component {
+  .recharge-prompt-group-component {
+    padding: 12px;
+    background: #F2F8FE;
+  }
+  .recharge-traffic-title {
+    margin-top: 6px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 12px;
+    color: #999999;
+  }
+  .recharge-traffic-list {
+    // max-height: 332px;
+    max-height: 300px;
+    .recharge-traffic-item {
+      padding: 12px;
+      margin-top: 12px;
+      background: #F2F8FE;
+      border-radius: 12px;
+      &:first-child {
+        margin-top: 0;
+      }
+      .recharge-traffic-cell {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 6px;
+        font-size: 12px;
+        color: #222222;
+        line-height: 17px;
+        &:first-child {
+          margin-top: 0;
+        }
+        &.red {
+          color: #F22E2E;
+        }
+        .recharge-traffic-value {
+          flex: 1;
+        }
+      }
+      .recharge-traffic-pay {
+        margin: 12px auto 0;
+        width: 100px;
+        .recharge-traffic-list-button {
+          height: 32px;
+        }
+      }
+    }
+  }
+}
