@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: '客服'
+  navigationBarTitleText: '全酋付'
 }

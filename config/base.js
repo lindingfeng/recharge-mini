@@ -82,16 +82,18 @@ module.exports = {
     webpackChain(chain) {
       // fix: 支付宝小程序报错Cannot read properties of null (reading 'addEventListener')
       // doc: https://github.com/NervJS/taro/issues/12420
-      chain.merge({
-        module: {
-          rule: [
-            {
-              test: /.js$/,
-              loader: "babel-loader",
-            },
-          ]
-        }
-      }),
+      if (process.env.TARO_ENV === 'alipay') {
+        chain.merge({
+          module: {
+            rule: [
+              {
+                test: /.js$/,
+                loader: "babel-loader",
+              },
+            ]
+          }
+        })
+      }
       // 按需加载
       chain.plugin('unplugin-vue-components').use(ComponentsPlugin({
         resolvers: [

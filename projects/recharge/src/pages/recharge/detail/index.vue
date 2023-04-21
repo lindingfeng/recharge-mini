@@ -105,7 +105,6 @@ function confirmRecharge () {
       settleQuery.push(`${key}=${rechargeParams[key]}`)
     }
   })
-  console.log(settleQuery)
   Taro.navigateTo({
     url: `/pages/cashier/index?${settleQuery.join('&')}`
   })

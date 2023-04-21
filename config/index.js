@@ -1,3 +1,5 @@
+// export const isProd = __wxConfig ? __wxConfig.envVersion !== 'develop' : true
+
 // 登录接口映射
 export const loginMap = {
   recharge: '/user/login'

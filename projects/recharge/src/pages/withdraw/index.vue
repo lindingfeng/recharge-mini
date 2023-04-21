@@ -31,25 +31,25 @@ const noData = computed(() => list.value.length === 0)
 async function getWithdrawList () {
   const [res] = await apis.getWithdrawList()
   if (res.status === 200) {
-    // list.value = res.data || []
-    list.value = [{
-      "amount_statement_name": "提现",
-      "created_at": "2022-12-26 09:57:36",
-      "amount_for_humans": "100.00",
-      "status_for_humans": "等待"
-    },
-    {
-      "amount_statement_name": "提现",
-      "created_at": "2022-12-26 09:57:35",
-      "amount_for_humans": "100.00",
-      "status_for_humans": "等待"
-    },
-    {
-      "amount_statement_name": "提现",
-      "created_at": "2022-12-26 09:57:35",
-      "amount_for_humans": "100.00",
-      "status_for_humans": "等待"
-    }]
+    list.value = res.data || []
+    // list.value = [{
+    //   "amount_statement_name": "提现",
+    //   "created_at": "2022-12-26 09:57:36",
+    //   "amount_for_humans": "100.00",
+    //   "status_for_humans": "等待"
+    // },
+    // {
+    //   "amount_statement_name": "提现",
+    //   "created_at": "2022-12-26 09:57:35",
+    //   "amount_for_humans": "100.00",
+    //   "status_for_humans": "等待"
+    // },
+    // {
+    //   "amount_statement_name": "提现",
+    //   "created_at": "2022-12-26 09:57:35",
+    //   "amount_for_humans": "100.00",
+    //   "status_for_humans": "等待"
+    // }]
   }
   loaded.value = true
 }

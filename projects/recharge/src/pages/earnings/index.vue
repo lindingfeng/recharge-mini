@@ -31,19 +31,19 @@ const noData = computed(() => list.value.length === 0)
 async function getEarningsList () {
   const [res] = await apis.getEarningsList()
   if (res.status === 200) {
-    // list.value = res.data || []
-    list.value = [{
-      "amount_statement_name": "推广返利",
-      "created_at": "2022-12-26 09:32:03",
-      "amount_for_humans": "200.00",
-      "balance_for_humans": "300.00"
-    },
-    {
-      "amount_statement_name": "推广返利",
-      "created_at": "2022-12-26 01:28:31",
-      "amount_for_humans": "100.00",
-      "balance_for_humans": "100.00"
-    }]
+    list.value = res.data || []
+    // list.value = [{
+    //   "amount_statement_name": "推广返利",
+    //   "created_at": "2022-12-26 09:32:03",
+    //   "amount_for_humans": "200.00",
+    //   "balance_for_humans": "300.00"
+    // },
+    // {
+    //   "amount_statement_name": "推广返利",
+    //   "created_at": "2022-12-26 01:28:31",
+    //   "amount_for_humans": "100.00",
+    //   "balance_for_humans": "100.00"
+    // }]
   }
   loaded.value = true
 }

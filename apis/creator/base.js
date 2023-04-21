@@ -79,6 +79,7 @@ export default class BaseService {
    * 默认Request处理
    */
   defaultRequest (data = {}) {
+    const globalStore = useGlobalStore()
     const signData = this._getSignData()
 
     if (this.appSecret) {
@@ -86,6 +87,10 @@ export default class BaseService {
     }
 
     Object.assign(data, signData)
+
+    if (globalStore.env) {
+      data.client = globalStore.env
+    }
 
     this.hooks.onBeforeRequest && this.hooks.onBeforeRequest(data)
     

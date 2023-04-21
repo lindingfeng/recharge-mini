@@ -1,9 +1,7 @@
 <template>
   <view class="home-page">
-    <message-notice
+    <notice-bar
       v-if="baseCommonStore.messageNotice"
-      color="#218CFF"
-      background="rgba(255, 255, 255, 0.6)"
       :text="baseCommonStore.messageNotice"
     />
     <view class="home-main">
@@ -12,16 +10,16 @@
         :loading="baseCommonStore.status.rechargeLoading"
       />
       <recharge-category-group
-        class="home-recharge"
         :list="baseCommonStore.rechargeList"
         :loading="baseCommonStore.status.rechargeLoading"
+        class="home-recharge"
         @category="toRecharge"
       />
       <base-swiper
         v-if="baseCommonStore.bannerList.length"
-        class="home-banner"
         :height="Taro.pxTransform(120)"
         :list="baseCommonStore.bannerList"
+        class="home-banner"
       />
     </view>
   </view>
@@ -29,7 +27,7 @@
 
 <script setup>
 import { useCommonStore } from '@/store/common'
-import MessageNotice from '@/components/message-notice'
+import NoticeBar from '@/components/notice-bar'
 import CountryInputGroup from '@/components/country-input-group'
 import RechargeCategoryGroup from '@/components/recharge-category-group'
 import BaseSwiper from '@global/components/base-swiper'
@@ -44,37 +42,23 @@ function toRecharge (item) {
     `service_id=${item.service_id}`,
     `calling_code=${baseCommonStore.selectCountry.calling_code || ''}`
   ].join('&')
-  switch (item.service_id) {
-    case 'mobile_phone_credits':
-      Taro.navigateTo({ url: `/pages/recharge/phone/index?${querys}` })
-      break;
-    case 'mobile_phone_data':
-      Taro.navigateTo({ url: `/pages/recharge/flow/index?${querys}` })
-      break;
-    case 'internet_credits':
-    case 'landline_credits':
-    case 'nol_credits':
-      Taro.navigateTo({ url: `/pages/recharge/network-fix-nol/index?${querys}` })
-      break;
-    case 'prepaid_card_credits':
-      Taro.navigateTo({ url: `/pages/recharge/card/index?${querys}` })
-      break;
-    case 'salik_pin':
-      Taro.navigateTo({ url: `/pages/recharge/salik/index?${querys}` })
-      break;
-    case 'dubai_fine':
-      Taro.navigateTo({ url: `/pages/recharge/traffic/index?${querys}` })
-      break;
+  const navigateMap = {
+    'mobile_phone_credits': '/pages/recharge/phone/index',
+    'mobile_phone_data': '/pages/recharge/flow/index',
+    'internet_credits': '/pages/recharge/network-fix-nol/index',
+    'landline_credits': '/pages/recharge/network-fix-nol/index',
+    'nol_credits': '/pages/recharge/network-fix-nol/index',
+    'prepaid_card_credits': '/pages/recharge/card/index',
+    'salik_pin': '/pages/recharge/salik/index',
+    'dubai_fine': '/pages/recharge/traffic/index'
+  }
+  if (navigateMap[item.service_id]) {
+    Taro.navigateTo({ url: `${navigateMap[item.service_id]}?${querys}` })
   }
 }
 
 useDidShow(() => {
-  // console.log('useDidShow', process.env.VUE_APP_PROJECT)
-  // h5用户
-  // Taro.setStorageSync('recharge_ui', {"token":"96b4567531a0b820a5d5bf377e63e847"})
-  // 微信用户
-  Taro.setStorageSync('recharge_ui', {"token":"281b05086776bd39fc269b978aebfd6d","id":6,"openid":"oMnqI5w4JyDMGZvYth7OVz66jqRQ","nickname":"林帅帅","headimgurl":"https://thirdwx.qlogo.cn/mmopen/vi_32/xcd2gPUyCyfKge7iaoHbcE0ISUV1wZufLKiaIIrjjeXnWYugUdvkE7HXDHKXHWxK0JkxhoicU9qee7zs7XZT524Hw/132","agent_openid":"","create_at":"2023-01-07 10:13:43"})
-  // Taro.setStorageSync('recharge_ui', {"token":"666","id":6,"openid":"oMnqI5w4JyDMGZvYth7OVz66jqRQ","nickname":"林帅帅","headimgurl":"https://thirdwx.qlogo.cn/mmopen/vi_32/xcd2gPUyCyfKge7iaoHbcE0ISUV1wZufLKiaIIrjjeXnWYugUdvkE7HXDHKXHWxK0JkxhoicU9qee7zs7XZT524Hw/132","agent_openid":"","create_at":"2023-01-07 10:13:43"})
+  Taro.setStorageSync('recharge_ui', {"token":"c29e3650bd4e853ecea29b75c315a978","id":6,"openid":"oMnqI5w4JyDMGZvYth7OVz66jqRQ","nickname":"林帅帅","headimgurl":"https://thirdwx.qlogo.cn/mmopen/vi_32/xcd2gPUyCyfKge7iaoHbcE0ISUV1wZufLKiaIIrjjeXnWYugUdvkE7HXDHKXHWxK0JkxhoicU9qee7zs7XZT524Hw/132","agent_openid":"","create_at":"2023-01-07 10:13:43"})
   baseCommonStore.getCurrentCountry()
   baseCommonStore.getAllCountry()
   baseCommonStore.getBannerList()
