@@ -6,12 +6,12 @@
         <view class="user-info-bg">
           <view class="user-avatar">
             <image
-              v-if="baseUserStore.userInfo.headimgurl"
+              v-if="globalUserStore.userInfo.headimgurl"
               class="icon-avatar"
-              :src="baseUserStore.userInfo.headimgurl"
+              :src="globalUserStore.userInfo.headimgurl"
             />
           </view>
-          <view class="user-name">{{ baseUserStore.userInfo.nickname }}</view>
+          <view class="user-name">{{ globalUserStore.userInfo.nickname }}</view>
         </view>
       </view>
     </view>
@@ -28,20 +28,26 @@
         <view class="menu-cell-name">{{ item.function_desc }}</view>
         <image class="icon-right" src="@/assets/imgs/common/icon_right.png" />
       </view>
-      <!-- <button open-type="getAuthorize" scope="userInfo" @getAuthorize="getAuthorize">获取用户信息</button> -->
     </view>
   </view>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import Taro, { useDidShow } from '@tarojs/taro'
-import { useUserStore } from '@/store/user'
+import { ref, computed } from 'vue'
+import Taro, { useLoad, useDidShow } from '@tarojs/taro'
+import { useGlobalUserStore } from '@global/common/store/user'
+import { useGlobalStore } from '@global/common/store'
 import apis from '@global/apis/recharge'
 
-const baseUserStore = useUserStore()
+const globalStore = useGlobalStore()
+
+const globalUserStore = useGlobalUserStore()
 
 const funcList = ref([])
+
+const needAuth = computed(() => {
+  return globalStore.env === 'alipay' && globalUserStore.userInfo.needAuth === '1'
+})
 
 async function getUserFunction () {
   const [res] = await apis.getUserFunction()
@@ -50,14 +56,25 @@ async function getUserFunction () {
   }
 }
 
-// function getAuthorize (e) {
-//   console.log('getauthorize', e)
-//   Taro.getOpenUserInfo({
-//     complete: (res) => {
-//       console.log(res)
-//     }
-//   })
-// }
+async function bindUserInfo () {
+  if (needAuth.value) {
+    Taro.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    const [res] = await globalUserStore.getAuthCode()
+    if (res.authCode) {
+      await globalUserStore.bindUserInfo({
+        code: res.authCode
+      })
+    }
+    Taro.hideLoading()
+  }
+}
+
+useLoad(() => {
+  bindUserInfo()
+})
 
 useDidShow(() => {
   // 获取成功示例
@@ -69,7 +86,7 @@ useDidShow(() => {
   //     console.log(res)
   //   }
   // })
-  baseUserStore.getUserInfo()
+  globalUserStore.getUserInfo()
   getUserFunction()
 })
 

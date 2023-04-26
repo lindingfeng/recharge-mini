@@ -80,18 +80,27 @@ export function saveFile () {
     const reg = new RegExp('^data:image\/([a-zA-z]+);base64,([\\s\\S]*)')
 
     // base64图片需转为临时文件路径
-    if (false && reg.test(image) && Taro.getFileSystemManager) {
+    if (reg.test(image)) {
       try {
-        const fs = Taro.getFileSystemManager()
-        const filePath = `${Taro.env.USER_DATA_PATH}/${new Date().getTime()}.${image.replace(reg, '$1')}`
-        // 支付宝小程序写入文件后getImageInfo读取该文件信息失败，所以先屏蔽
-        if (fs.writeFileSync) {
-          fs.writeFileSync(
-            filePath,
-            image.replace(reg, '$2'),
-            'base64'
-          )
-          imagePath = filePath
+        // 支付宝小程序可以直接报错base64格式图片，不需要转为临时路径
+        if (globalStore.env === 'alipay') {
+          imagePath = image
+        } else if (Taro.getFileSystemManager) {
+          const fs = Taro.getFileSystemManager()
+          const filePath = `${Taro.env.USER_DATA_PATH}/${new Date().getTime()}.${image.replace(reg, '$1')}`
+          if (fs.writeFileSync) {
+            fs.writeFileSync(
+              filePath,
+              image.replace(reg, '$2'),
+              'base64'
+            )
+            imagePath = filePath
+          }
+        } else {
+          return Taro.showToast({
+            icon: 'none',
+            title: '当前客户端不支持报错base64图片'
+          })
         }
       } catch (error) {
         console.log(error.message)

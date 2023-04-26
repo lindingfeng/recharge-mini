@@ -41,7 +41,7 @@ import BaseButton from '@global/components/base-button'
 import { useGlobalStore } from '@global/common/store'
 import { payment } from '@global/composables/common'
 import apis from '@global/apis/recharge'
-import { envMap } from '@global/config'
+import { envMap } from '@/config'
 
 const IconPayNor = require('@/assets/imgs/common/icon_pay_nor.png')
 

@@ -1,7 +1,7 @@
-# recharge
+# 全酋付
 
 ## 技术栈
-Taro3.6 + Webpack + Vue3 + Pinia2 + nutui
+Taro3.6 + Webpack4 + Vue3 + Pinia2 + nutui-taro
 
 ## 版本要求
 node >= 14

@@ -17,6 +17,7 @@
     "build:recharge-qq": "yarn workspace @recharge/main run build:qq",
     "build:recharge-swan": "yarn workspace @recharge/main run build:swan",
     "build:recharge-weapp": "yarn workspace @recharge/main run build:weapp",
-    "build:recharge-alipay": "yarn workspace @recharge/main run build:alipay"
+    "build:recharge-alipay": "yarn workspace @recharge/main run build:alipay",
+    "build:all": "yarn build:recharge-alipay && yarn build:recharge-weapp && yarn build:recharge-h5 && yarn build:recharge-tt && yarn build:recharge-qq && yarn build:recharge-jd && yarn build:recharge-swan"
   }
 }

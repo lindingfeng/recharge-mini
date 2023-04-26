@@ -164,9 +164,9 @@ async function queryTraffic () {
     data.rechargePopup = true
   } else {
     Taro.showToast({
-        icon: 'none',
-        title: res.message || '获取罚单信息失败'
-      })
+      icon: 'none',
+      title: res.message || '获取罚单信息失败'
+    })
   }
 }
 

@@ -1,6 +1,6 @@
 import { apiHost as baseUrl, appId, appSecret } from '@/config'
 import HttpService from '@global/apis/creator'
-import { loginMap, checkLoginStateMap } from '@global/config'
+import { loginMap, getUserInfoMap, checkLoginStateMap } from '@global/config'
 
 const http = new HttpService({
   appId,
@@ -16,6 +16,10 @@ export default {
   // 登录
   login (body) {
     return http.service(loginMap[process.env.VUE_APP_PROJECT], body);
+  },
+  // 获取用户信息
+  getUserInfo (body) {
+    return http.service(getUserInfoMap[process.env.VUE_APP_PROJECT], body);
   },
   // 检查登录态
   checkLoginState (body) {

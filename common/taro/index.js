@@ -12,7 +12,6 @@ export const TaroAsync = (interfaceFunc, body = {}) => {
     if (typeof interfaceFunc !== 'function') {
       return resolve([{}, { message: '接口函数必传' }])
     }
-
     const interfaceCallback = interfaceFunc({
       ...body,
       success: function (res) {

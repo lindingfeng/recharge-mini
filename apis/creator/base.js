@@ -4,6 +4,7 @@ import { useGlobalStore } from '@global/common/store'
 import { useGlobalUserStore } from '@global/common/store/user'
 import { getUserInfo } from '@global/helper/loginManage'
 import { createApiSign, randomWord } from '@global/utils'
+import { envMap } from '@global/config'
 
 /**
  * @function http基类
@@ -33,6 +34,7 @@ export default class BaseService {
   initBase () {
     this.service = (path, body = {}, requestConfig = {}) => {
       return new Promise((resolve) => {
+        const globalStore = useGlobalStore()
         const globalUserStore = useGlobalUserStore()
         const data = this.userRequest(body)
 
@@ -42,18 +44,15 @@ export default class BaseService {
           method: 'POST',
           header: {
             'content-type': 'application/x-www-form-urlencoded',
-            'Access-Token': globalUserStore.userInfo?.token || getUserInfo('token')
+            'Access-Token': globalUserStore.userInfo?.token || getUserInfo('token'),
+            'Access-Client': envMap[globalStore.env].client || ''
           },
           ...this.config,
           ...requestConfig
         }).then(([response, error]) => {
-          // console.log('path', path)
-          // console.log(response, error)
-
           if (error) {
             return this.defaultResponseError(error)
           }
-
           resolve(this.userResponse(response))
         })
       })
@@ -79,7 +78,6 @@ export default class BaseService {
    * 默认Request处理
    */
   defaultRequest (data = {}) {
-    const globalStore = useGlobalStore()
     const signData = this._getSignData()
 
     if (this.appSecret) {
@@ -87,10 +85,6 @@ export default class BaseService {
     }
 
     Object.assign(data, signData)
-
-    if (globalStore.env) {
-      data.client = globalStore.env
-    }
 
     this.hooks.onBeforeRequest && this.hooks.onBeforeRequest(data)
     
@@ -119,6 +113,7 @@ export default class BaseService {
         const globalStore = useGlobalStore()
         const globalUserStore = useGlobalUserStore()
         const timestamp = +new Date()
+        console.log('logining', this.logining)
         console.log('timestamp', timestamp)
         console.log('loginTime', this.loginTime)
 
@@ -174,5 +169,6 @@ export default class BaseService {
         break;
       }
     }
+    Taro.hideLoading()
   }
 }

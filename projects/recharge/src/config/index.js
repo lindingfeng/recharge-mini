@@ -1,15 +1,9 @@
-export const apiHost = 'https://topuphub.top'
-// export const apiHost = 'http://dbt971.top'
+// export const apiHost = 'https://topuphub.top'
+export const apiHost = 'http://dbt971.top'
 
 export const appId = 'topuphubYIW5MTXU5tglVWjK'
 
 export const appSecret = 'LaPGqlPtzeqPrWkt'
-
-export const concatPhone = '400-6977707'
-
-export const concatQQ = '3599581998'
-
-export const mallMiniAppId = 'wx50974afb2488d5ef'
 
 export const prompt = {
   mobile_phone_credits: [
@@ -46,4 +40,14 @@ export const prompt = {
     '先请确认运营商和号码是否匹配且正确,再选择适合的金额支付充值，充值成功不可更改和退款；',
     '充值过程遇到问题，请及时联系客服;'
   ]
+}
+
+// 环境映射
+export const envMap = {
+  weapp: {
+    DEVICE_TYPE: 1,
+  },
+  alipay: {
+    DEVICE_TYPE: 2
+  }
 }
