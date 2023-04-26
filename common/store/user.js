@@ -120,7 +120,7 @@ export const useGlobalUserStore = defineStore('global-user', {
       //     this.getLoginCode()
       //   }
       // }
-      return this.login(params)
+      return this.login({ ...params })
     },
     /**
      * @function 支付宝授权
