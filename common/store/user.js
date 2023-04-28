@@ -68,7 +68,9 @@ export const useGlobalUserStore = defineStore('global-user', {
       const [res, err] = await apis.login({ alipay_auth_code: code, ...params })
       if (res.code === '0') {
         const data = res.result || {}
-        this.setUserInfo(Object.assign(this.userInfo, data, { needAuth: '1' }))
+        this.setUserInfo(Object.assign(this.userInfo, data, {
+          needAuth: params.type === 'userInfo' ? '0' : '1'
+        }))
         this.isNeedLogin = false
       } else {
         Taro.showToast({
@@ -120,7 +122,7 @@ export const useGlobalUserStore = defineStore('global-user', {
       //     this.getLoginCode()
       //   }
       // }
-      return this.login({ ...params })
+      return this.login(params)
     },
     /**
      * @function 支付宝授权

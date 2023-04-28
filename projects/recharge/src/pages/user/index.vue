@@ -11,7 +11,7 @@
               :src="globalUserStore.userInfo.headimgurl"
             />
           </view>
-          <view class="user-name">{{ globalUserStore.userInfo.nickname }}</view>
+          <view class="user-name">{{ globalUserStore.userInfo.nickname || '支付宝用户' }}</view>
         </view>
       </view>
     </view>
