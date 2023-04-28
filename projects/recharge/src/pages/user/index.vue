@@ -58,17 +58,7 @@ async function getUserFunction () {
 
 async function bindUserInfo () {
   if (needAuth.value) {
-    Taro.showLoading({
-      title: '加载中',
-      mask: true
-    })
-    const [res] = await globalUserStore.getAuthCode()
-    if (res.authCode) {
-      await globalUserStore.bindUserInfo({
-        code: res.authCode
-      })
-    }
-    Taro.hideLoading()
+    globalUserStore.bindUserInfo()
   }
 }
 

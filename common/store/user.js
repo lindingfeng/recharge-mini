@@ -57,13 +57,17 @@ export const useGlobalUserStore = defineStore('global-user', {
      * @function 登录
      */
     async login (params = {}) {
-      const code = await this.getLoginCode()
+      let code = params.code || ''
       if (!code) {
-        Taro.showToast({
-          icon: 'none',
-          title: '获取code失败'
-        })
-        return [{ message: '获取code失败' }, null]
+        const loginCode = await this.getLoginCode()
+        if (!loginCode) {
+          Taro.showToast({
+            icon: 'none',
+            title: '获取code失败'
+          })
+          return [{ message: '获取code失败' }, null]
+        }
+        code = loginCode
       }
       const [res, err] = await apis.login({ alipay_auth_code: code, ...params })
       if (res.code === '0') {
@@ -97,32 +101,12 @@ export const useGlobalUserStore = defineStore('global-user', {
     /**
      * @function 绑定用户信息
      */
-    async bindUserInfo (params = {}) {
-      // const data = {}
-      // Object.keys(params).forEach(key => {
-      //   if (params[key]) {
-      //     data[key] = params[key]
-      //   }
-      // })
-      // if (!params.code && this.loginCode.code) {
-      //   params.code = this.loginCode.code
-      // }
-      // const [res] = await apis.bindUserInfo(data)
-      // if (res.code === '0') {
-      //   const data = res.result || {}
-      //   this.setUserInfo(Object.assign(this.userInfo, data, { needAuth: '0' }))
-      //   this.loginCode.code = ''
-      //   this.loginCode.timestamp = 0
-      // } else {
-      //   Taro.showToast({
-      //     icon: 'none',
-      //     title: res.message || '绑定用户信息失败'
-      //   })
-      //   if (this.loginCode.code) {
-      //     this.getLoginCode()
-      //   }
-      // }
-      return this.login(params)
+    async bindUserInfo () {
+      const [res] = await this.getAuthCode()
+      if (!res.authCode) {
+        return [{ message: '获取code失败' }, null]
+      }
+      return this.login({ code: res.authCode, type: 'userInfo' })
     },
     /**
      * @function 支付宝授权
