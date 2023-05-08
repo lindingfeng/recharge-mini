@@ -106,7 +106,7 @@ export const useGlobalUserStore = defineStore('global-user', {
       if (!res.authCode) {
         return [{ message: '获取code失败' }, null]
       }
-      return this.login({ code: res.authCode, type: 'userInfo' })
+      return this.login({ type: 'userInfo', code: res.authCode, is_user_page: '1' })
     },
     /**
      * @function 支付宝授权
