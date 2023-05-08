@@ -20,7 +20,7 @@
         v-for="(item, index) in funcList"
         :key="index"
         class="menu-cell"
-        @click="Taro.navigateTo({ url: index == 1 ? '/pages/promote/index' : '/pages/recharge/list/index' || item.function_uri })"
+        @click="Taro.navigateTo({ url: item.function_uri })"
       >
         <view class="menu-cell-image">
           <image class="icon-menu" :src="item.function_icon_url" />
@@ -34,7 +34,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import Taro, { useLoad, useDidShow } from '@tarojs/taro'
+import Taro, { useDidShow } from '@tarojs/taro'
 import { useGlobalUserStore } from '@global/common/store/user'
 import { useGlobalStore } from '@global/common/store'
 import apis from '@global/apis/recharge'
@@ -56,15 +56,16 @@ async function getUserFunction () {
   }
 }
 
-async function bindUserInfo () {
+async function getUserInfo () {
   if (needAuth.value) {
-    globalUserStore.bindUserInfo()
+    const [res] = await globalUserStore.bindUserInfo()
+    if (res.data?.access_token) {
+      globalUserStore.getUserInfo()
+    }
+  } else {
+    globalUserStore.getUserInfo()
   }
 }
-
-useLoad(() => {
-  bindUserInfo()
-})
 
 useDidShow(() => {
   // 获取成功示例
@@ -76,8 +77,8 @@ useDidShow(() => {
   //     console.log(res)
   //   }
   // })
-  globalUserStore.getUserInfo()
   getUserFunction()
+  getUserInfo()
 })
 
 </script>

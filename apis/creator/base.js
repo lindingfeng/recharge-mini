@@ -113,9 +113,9 @@ export default class BaseService {
         const globalStore = useGlobalStore()
         const globalUserStore = useGlobalUserStore()
         const timestamp = +new Date()
-        console.log('logining', this.logining)
-        console.log('timestamp', timestamp)
-        console.log('loginTime', this.loginTime)
+        // console.log('logining', this.logining)
+        // console.log('timestamp', timestamp)
+        // console.log('loginTime', this.loginTime)
 
         if (
           this.logining ||
@@ -135,7 +135,7 @@ export default class BaseService {
         globalUserStore.login(globalStore.inviteInfo).then(([loginRes]) => {
           this.logining = false
           this.loginTime = +new Date()
-          if (loginRes.code === '0') {
+          if (loginRes.status === 200) {
             // 重载当前页面的onLoad、onShow方法
             const pageInstance = Taro.getCurrentInstance()
             pageInstance.page.onLoad(pageInstance.page.options || {})

@@ -7,7 +7,7 @@ import './app.scss'
 
 const App = createApp({
   onLaunch (options) {
-    console.log('onLaunch', options)
+    // console.log('onLaunch', options)
     // 检查更新
     updateManager()
   }

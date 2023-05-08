@@ -24,7 +24,7 @@ export const useGlobalUserStore = defineStore('global-user', {
       if (this.apiStatus.loginCode) return
       this.apiStatus.loginCode = true
       const [loginRes] = await TaroAsync(Taro.login)
-      console.log('code', loginRes.code)
+      // console.log('code', loginRes.code)
       this.apiStatus.loginCode = false
       if (loginRes.code) {
         this.loginCode.code = loginRes.code
@@ -47,7 +47,7 @@ export const useGlobalUserStore = defineStore('global-user', {
         return [{}, null]
       }
       const [res] = await apis.checkLoginState()
-      if (res.code === '0') {
+      if (res.status === 200) {
         this.isNeedLogin = false
         this.setUserInfo(Object.assign(this.userInfo, res.result || {}))
       }
@@ -70,12 +70,14 @@ export const useGlobalUserStore = defineStore('global-user', {
         code = loginCode
       }
       const [res, err] = await apis.login({ alipay_auth_code: code, ...params })
-      if (res.code === '0') {
-        const data = res.result || {}
-        this.setUserInfo(Object.assign(this.userInfo, data, {
-          needAuth: params.type === 'userInfo' ? '0' : '1'
-        }))
-        this.isNeedLogin = false
+      if (res.status === 200) {
+        const data = res.data || {}
+        if (data.access_token) {
+          this.setUserInfo(Object.assign(this.userInfo, { token: data.access_token }, {
+            needAuth: params.is_user_page === '1' ? '0' : '1'
+          }))
+          this.isNeedLogin = false
+        }
       } else {
         Taro.showToast({
           icon: 'none',
@@ -106,7 +108,7 @@ export const useGlobalUserStore = defineStore('global-user', {
       if (!res.authCode) {
         return [{ message: '获取code失败' }, null]
       }
-      return this.login({ type: 'userInfo', code: res.authCode, is_user_page: '1' })
+      return this.login({ code: res.authCode, is_user_page: '1' })
     },
     /**
      * @function 支付宝授权

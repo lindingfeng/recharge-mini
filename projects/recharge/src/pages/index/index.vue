@@ -61,11 +61,9 @@ function toRecharge (item) {
 }
 
 useDidShow(async () => {
-  // if (!globalUserStore.userInfo.token) {
-  //   // await globalUserStore.login()
-  //   // await globalUserStore.getLoginCode()
-  // }
-  // Taro.setStorageSync('recharge_ui', {"token":"c29e3650bd4e853ecea29b75c315a978","id":6,"openid":"oMnqI5w4JyDMGZvYth7OVz66jqRQ","nickname":"林帅帅","headimgurl":"https://thirdwx.qlogo.cn/mmopen/vi_32/xcd2gPUyCyfKge7iaoHbcE0ISUV1wZufLKiaIIrjjeXnWYugUdvkE7HXDHKXHWxK0JkxhoicU9qee7zs7XZT524Hw/132","agent_openid":"","create_at":"2023-01-07 10:13:43"})
+  if (!globalUserStore.userInfo.token) {
+    await globalUserStore.login()
+  }
   baseCommonStore.getCurrentCountry()
   baseCommonStore.getAllCountry()
   baseCommonStore.getBannerList()
