@@ -97,11 +97,11 @@ async function getPayDetail () {
 }
 
 async function confirmRecharge () {
-  if (Taro) {
-    return toPay({
-      tradeNO: '1111111111111',
-    })
-  }
+  // if (Taro) {
+  //   return toPay({
+  //     tradeNO: '1111111111111',
+  //   })
+  // }
   data.loading = true
   const [res] = await apis.getPayParams({
     pay_mode: data.selectPay,
@@ -128,6 +128,7 @@ async function confirmRecharge () {
 }
 
 async function toPay (params) {
+  console.log('pay params: ', params)
   const [res, err] = await rechargePay(params)
   console.log(res, err)
   data.loading = false
