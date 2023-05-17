@@ -5,6 +5,7 @@
 	"project": "recharge",
 	"projectName": "全酋付",
 	"outputRoot": "recharge",
+	"author": "lindingfeng",
 	"description": "recharge main miniprogram",
 	"templateInfo": {
 		"name": "vue3-NutUI",
@@ -27,11 +28,6 @@
 		"dev:qq": "npm run build:qq -- --watch",
 		"dev:jd": "npm run build:jd -- --watch"
 	},
-	"browserslist": [
-		"Android >= 6.0",
-		"ios >= 10"
-	],
-	"author": "lindingfeng",
 	"dependencies": {
 		"@babel/runtime": "^7.7.7",
 		"@nutui/nutui-taro": "^4.0.4",
@@ -65,5 +61,9 @@
 		"unplugin-vue-components": "^0.24.1",
 		"vue-loader": "^16.0.0",
 		"webpack-bundle-analyzer": "^4.8.0"
-	}
+	},
+	"browserslist": [
+		"Android >= 6.0",
+		"ios >= 10"
+	]
 }

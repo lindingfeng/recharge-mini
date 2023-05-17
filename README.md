@@ -20,3 +20,8 @@ yarn dev:recharge-alipay
 ```
 yarn build:recharge-alipay
 ```
+
+### 预览
+```
+将build/alipay/recharge文件夹导入小程序开发工具即可
+```
