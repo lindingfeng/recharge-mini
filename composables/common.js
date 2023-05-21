@@ -37,7 +37,8 @@ export function payment () {
             if (res.resultCode !== '9000' || err) {
               const status = err?.errorMessage || res?.memo || '支付失败'
               const code = err?.error || res?.resultCode || ''
-              return resolve([{}, { message: `${status}${code ? '（状态码：' + code + '）' : ''}` }])
+              const message = res.resultCode === '6001' ? '' : `${status}${code ? '（状态码：' + code + '）' : ''}`
+              return resolve([{}, { message }])
             }
             resolve([{ code: 200 }, null])
           })

@@ -1,9 +1,9 @@
-// export const apiHost = 'https://topuphub.top'
-export const apiHost = 'http://dbt971.top'
+export const apiHost = 'https://topuphub.top'
+// export const apiHost = 'http://dbt971.top'
 
-export const appId = 'topuphubYIW5MTXU5tglVWjK'
+export const appId = 'topuphubg62WlSLMAV1qNsIp'
 
-export const appSecret = 'LaPGqlPtzeqPrWkt'
+export const appSecret = 'mD82bvmsj1GBS0B3'
 
 export const prompt = {
   mobile_phone_credits: [

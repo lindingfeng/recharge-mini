@@ -185,7 +185,8 @@
           font-size: 14px;
           color: #CCCCCC;
         }
-        .withdraw-input {
+        // .withdraw-input {
+        .input-text {
           // 解决支付宝小程序文本下坠问题（window.enableInPageRenderInput = 'YES'时要去掉）
           // height: auto;
           font-size: 14px;

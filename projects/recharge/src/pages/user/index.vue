@@ -68,15 +68,6 @@ async function getUserInfo () {
 }
 
 useDidShow(() => {
-  // 获取成功示例
-  // {response: '{"response":{"code":"10000","msg":"Success","avatar":"https://tfs.alipayobjects.com/images/partner/T1Z3FcXkdUXXXXXXXX","city":"","countryCode":"","gender":"","nickName":"有趣的人类","province":""}}'}
-  // 获取失败示例
-  // {response: '{"response":{"code":"40003","msg":"Insufficient Conditions","subCode":"isv.invalid-auth-relations","subMsg":"无效的授权关系"}}'}
-  // Taro.getOpenUserInfo({
-  //   complete: (res) => {
-  //     console.log(res)
-  //   }
-  // })
   getUserFunction()
   getUserInfo()
 })
