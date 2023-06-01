@@ -11,7 +11,7 @@
               :src="globalUserStore.userInfo.headimgurl"
             />
           </view>
-          <view class="user-name">{{ globalUserStore.userInfo.nickname || '支付宝用户' }}</view>
+          <view class="user-name">{{ globalUserStore.userInfo.nickname || defaultNickname }}</view>
         </view>
       </view>
     </view>
@@ -38,12 +38,17 @@ import Taro, { useDidShow } from '@tarojs/taro'
 import { useGlobalUserStore } from '@global/common/store/user'
 import { useGlobalStore } from '@global/common/store'
 import apis from '@global/apis/recharge'
+import { envMap } from '@/config'
 
 const globalStore = useGlobalStore()
 
 const globalUserStore = useGlobalUserStore()
 
 const funcList = ref([])
+
+const defaultNickname = computed(() => {
+  return envMap[globalStore.env]?.DEFAULT_NICKNAME || ''
+})
 
 const needAuth = computed(() => {
   return globalStore.env === 'alipay' && globalUserStore.userInfo.needAuth === '1'

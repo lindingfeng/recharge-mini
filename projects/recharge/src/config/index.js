@@ -46,8 +46,12 @@ export const prompt = {
 export const envMap = {
   weapp: {
     DEVICE_TYPE: 1,
+    DEFAULT_NICKNAME: '微信用户',
+    CODE_STRING: 'wechat_js_code'
   },
   alipay: {
-    DEVICE_TYPE: 2
+    DEVICE_TYPE: 2,
+    DEFAULT_NICKNAME: '支付宝用户',
+    CODE_STRING: 'alipay_auth_code'
   }
 }

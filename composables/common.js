@@ -14,7 +14,10 @@ export function payment () {
     return new Promise(resolve => {
       const interfaceMap = {
         weapp: function () {
-          TaroAsync(Taro.requestPayment, only(params, 'timeStamp nonceStr package signType paySign')).then(([res, err]) => {
+          TaroAsync(Taro.requestPayment, only(
+            params,
+            'timeStamp nonceStr package signType paySign'
+          )).then(([res, err]) => {
             // res.errMsg == 'requestPayment:ok'
             if (err) {
               return resolve([{}, { message: '支付失败' }])
@@ -33,7 +36,10 @@ export function payment () {
          * 6004	处理结果未知（有可能已经成功）
          */
         alipay: function () {
-          TaroAsync(Taro.tradePay, only(params, 'tradeNO orderStr')).then(([res, err]) => {
+          TaroAsync(Taro.tradePay, only(
+            params,
+            'tradeNO orderStr'
+          )).then(([res, err]) => {
             if (res.resultCode !== '9000' || err) {
               const status = err?.errorMessage || res?.memo || '支付失败'
               const code = err?.error || res?.resultCode || ''
@@ -46,7 +52,7 @@ export function payment () {
       }
 
       if (!interfaceMap[globalStore.env]) {
-        return resolve([{}, { message: '支付失败' }])
+        return resolve([{}, { message: '当前客户端不支持支付功能' }])
       }
       
       interfaceMap[globalStore.env]()
@@ -100,7 +106,7 @@ export function saveFile () {
         } else {
           return Taro.showToast({
             icon: 'none',
-            title: '当前客户端不支持报错base64图片'
+            title: '当前客户端不支持保存base64图片'
           })
         }
       } catch (error) {

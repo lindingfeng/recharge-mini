@@ -1,7 +1,9 @@
 import Taro from '@tarojs/taro'
 import { defineStore } from 'pinia'
 import { TaroAsync } from '@global/common/taro'
+import { useGlobalStore } from '@global/common/store'
 import { getUserInfo, setUserInfo, clearUserInfo } from '@global/helper/loginManage'
+import { envMap } from '@/config'
 import apis from '@global/apis'
 
 export const useGlobalUserStore = defineStore('global-user', {
@@ -63,13 +65,21 @@ export const useGlobalUserStore = defineStore('global-user', {
         if (!loginCode) {
           Taro.showToast({
             icon: 'none',
-            title: '获取code失败'
+            title: '获取登录code失败'
           })
-          return [{ message: '获取code失败' }, null]
+          return [{ message: '获取登录code失败' }, null]
         }
         code = loginCode
       }
-      const [res, err] = await apis.login({ alipay_auth_code: code, ...params })
+
+      const globalStore = useGlobalStore()
+      const loginParams = { ...params }
+
+      if (envMap[globalStore.env]?.CODE_STRING) {
+        loginParams[envMap[globalStore.env].CODE_STRING] = code
+      }
+
+      const [res, err] = await apis.login(loginParams)
       if (res.status === 200) {
         const data = res.data || {}
         if (data.access_token) {
@@ -106,7 +116,7 @@ export const useGlobalUserStore = defineStore('global-user', {
     async bindUserInfo () {
       const [res] = await this.getAuthCode()
       if (!res.authCode) {
-        return [{ message: '获取code失败' }, null]
+        return [{ message: '获取用户信息code失败' }, null]
       }
       return this.login({ code: res.authCode, is_user_page: '1' })
     },
