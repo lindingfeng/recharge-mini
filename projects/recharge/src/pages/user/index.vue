@@ -38,7 +38,7 @@ import Taro, { useDidShow } from '@tarojs/taro'
 import { useGlobalUserStore } from '@global/common/store/user'
 import { useGlobalStore } from '@global/common/store'
 import apis from '@global/apis/recharge'
-import { envMap } from '@/config'
+import { envMap } from '@global/config'
 
 const globalStore = useGlobalStore()
 

@@ -1,22 +1,21 @@
+import Taro from '@tarojs/taro'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { updateManager } from '@global/common/taro'
-// import { Icon, Popup, OverLay } from '@nutui/nutui-taro'
 
 import './app.scss'
 
 const App = createApp({
   onLaunch (options) {
-    // console.log('onLaunch', options)
     // 检查更新
     updateManager()
+    Taro.setStorageSync('recharge_ui', {
+      token: '46fd1173011b455fe389eb5743193cd7',
+      needAuth: '0'
+    })
   }
 })
 
-App
-.use(createPinia())
-// .use(Icon)
-// .use(Popup)
-// .use(OverLay)
+App.use(createPinia())
 
 export default App

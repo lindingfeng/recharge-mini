@@ -45,7 +45,7 @@ export default class BaseService {
           header: {
             'content-type': 'application/x-www-form-urlencoded',
             'Access-Token': globalUserStore.userInfo?.token || getUserInfo('token'),
-            'Access-Client': envMap[globalStore.env].client || ''
+            'Access-Client': envMap[globalStore.env].CLIENT || ''
           },
           ...this.config,
           ...requestConfig

@@ -126,7 +126,7 @@ async function checkAccount () {
   } else {
     Taro.showToast({
       icon: 'none',
-      title: res.message || '检验手机号失败'
+      title: res.message || '校验手机号失败'
     })
     emits('phone-no-pass', {})
   }

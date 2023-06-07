@@ -35,10 +35,11 @@
       font-size: 20px;
       color: #CCCCCC;
     }
-    // .recharge-input-group-input {
+    // .recharge-input-group-input,
     .input-text {
       // 解决支付宝小程序文本下坠问题（window.enableInPageRenderInput = 'YES'时，如果字号大于20，需要设置高度，否则要去掉）
-      height: 30px;
+      // 微信小程序input框font-size字号较大时，需要设置足够的height，否则聚焦的时候文字会飘移，input会有滚动条效果
+      height: 32px;
       font-size: 24px;
       color: #222222;
       &::-webkit-input-placeholder {

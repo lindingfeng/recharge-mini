@@ -33,13 +33,14 @@
   }
   .recharge-account-cell-placeholder {
     font-size: 16px;
-    font-weight: normal;
+    // font-weight: normal;
     color: #CCCCCC;
   }
   // .recharge-account-cell-input {
   .input-text {
+    height: 24px;
     font-size: 18px;
-    font-weight: 500;
+    // font-weight: 500;
     color: #222222;
     &::-webkit-input-placeholder {
       font-size: 16px;

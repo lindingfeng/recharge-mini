@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { TaroAsync } from '@global/common/taro'
 import { useGlobalStore } from '@global/common/store'
 import { getUserInfo, setUserInfo, clearUserInfo } from '@global/helper/loginManage'
-import { envMap } from '@/config'
+import { envMap } from '@global/config'
 import apis from '@global/apis'
 
 export const useGlobalUserStore = defineStore('global-user', {

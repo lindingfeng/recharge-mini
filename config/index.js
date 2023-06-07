@@ -18,12 +18,20 @@ export const checkLoginStateMap = {
 // 环境映射
 export const envMap = {
   h5: {
-    client: 'browserH5'
+    DEVICE_TYPE: 0,
+    CLIENT: 'browserH5',
+    DEFAULT_NICKNAME: '网页用户'
   },
   weapp: {
-    client: 'wechatMini'
+    DEVICE_TYPE: 1,
+    CLIENT: 'wechatMini',
+    DEFAULT_NICKNAME: '微信用户',
+    CODE_STRING: 'wechat_js_code'
   },
   alipay: {
-    client: 'alipayMini'
+    DEVICE_TYPE: 2,
+    CLIENT: 'alipayMini',
+    DEFAULT_NICKNAME: '支付宝用户',
+    CODE_STRING: 'alipay_auth_code'
   }
 }
