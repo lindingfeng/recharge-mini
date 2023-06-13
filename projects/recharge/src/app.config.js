@@ -19,7 +19,8 @@ export default {
     'pages/cashier/index',
     'pages/promote/index',
     'pages/withdraw/index',
-    'pages/earnings/index'
+    'pages/earnings/index',
+    'pages/webview/index'
   ],
   tabBar: {
     color: '#222222',
