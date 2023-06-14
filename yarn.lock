@@ -1414,10 +1414,10 @@
   resolved "https://registry.npmmirror.com/@nutui/icons-vue-taro/-/icons-vue-taro-0.0.9.tgz#b5223eb01e2b987fdbe460e5d0439a66481e54f1"
   integrity sha512-10VYAtFC+o1X0anGs+y2PgF1NWMeLFz2JVMRw4BWLg6wbtVbYy9wukLxyGhZC6Yf6t39DcwaGVda8paV7K6/Ew==
 
-"@nutui/nutui-taro@^4.0.8":
-  version "4.0.8"
-  resolved "https://registry.npmmirror.com/@nutui/nutui-taro/-/nutui-taro-4.0.8.tgz#3cdc6ba49ec8c949742c78a7ff80867ba0b627a9"
-  integrity sha512-mnlrDXN2gMdmo73yPTarM6kz7veX5IRLaQ95X6UscG1PHqbR0tKhk7wmR+BT2/MvG1hB+6eestT0hRT4D7opkw==
+"@nutui/nutui-taro@^4.0.9":
+  version "4.0.9"
+  resolved "https://registry.npmmirror.com/@nutui/nutui-taro/-/nutui-taro-4.0.9.tgz#22b08bc0df6ea39da1d42be26e256b918a733ec2"
+  integrity sha512-+p64Bxo03aQflND1nn1xO99W3YEdhciBxt+uV8SyLCWHJ6GMx5wtMmC0VEQSz3MMB5EZen9OwwGomJFpBfYVag==
   dependencies:
     "@nutui/icons-vue-taro" "^0.0.9"
     sass "^1.50.0"
