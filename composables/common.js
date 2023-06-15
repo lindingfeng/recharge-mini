@@ -20,7 +20,8 @@ export function payment () {
           )).then(([res, err]) => {
             // res.errMsg == 'requestPayment:ok'
             if (err) {
-              return resolve([{}, { message: '支付失败' }])
+              const message = err.errMsg !== 'requestPayment:fail cancel' ? `支付失败${err.errMsg ? '（' + err.errMsg + '）' : ''}` : ''
+              return resolve([{}, { message }])
             }
             resolve([{ code: 200 }, null])
           })

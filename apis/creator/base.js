@@ -50,10 +50,14 @@ export default class BaseService {
           ...this.config,
           ...requestConfig
         }).then(([response, error]) => {
-          if (error) {
-            return this.defaultResponseError(error)
+          if (error || response.statusCode !== 200) {
+            const data = this.defaultResponseError(error || response)
+            if (Array.isArray(data)) {
+              resolve(data)
+            }
+          } else {
+            resolve(this.userResponse(response))
           }
-          resolve(this.userResponse(response))
         })
       })
     }
@@ -101,7 +105,10 @@ export default class BaseService {
    */
   defaultResponseError (error) {
     this.hooks.onResponseError && this.hooks.onResponseError(error)
-    switch (error.status) {
+    let returnData = true
+    const status = error.status || error.statusCode
+    Taro.hideLoading()
+    switch (status) {
       case 400:
         Taro.showToast({
           icon: 'none',
@@ -113,10 +120,10 @@ export default class BaseService {
         const globalStore = useGlobalStore()
         const globalUserStore = useGlobalUserStore()
         const timestamp = +new Date()
+        returnData = false
         // console.log('logining', this.logining)
         // console.log('timestamp', timestamp)
         // console.log('loginTime', this.loginTime)
-
         if (
           this.logining ||
           (this.loginTime === 0 && timestamp < this.loginTime) ||
@@ -124,7 +131,6 @@ export default class BaseService {
         ) return
 
         this.logining = true
-
         globalUserStore.logout()
 
         if (this.hooks.onAfterLoginFailure) {
@@ -169,6 +175,8 @@ export default class BaseService {
         break;
       }
     }
-    Taro.hideLoading()
+    if (returnData) {
+      return [{}, error]
+    }
   }
 }

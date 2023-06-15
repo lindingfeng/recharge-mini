@@ -61,11 +61,27 @@ const data = reactive({
   loading: false
 })
 
-function changePayWay ({ pay_mode }) {
-  if (data.selectPay === pay_mode) return
-  data.selectPay = pay_mode
+/**
+ * @function 获取支付产品信息
+ */
+ async function getPayDetail () {
+  const [res] = await apis.getPayDetail({
+    product_id: data.payParams.product_id,
+    product_amount: data.payParams.product_amount
+  })
+  if (res.status === 200) {
+    data.payInfo = res.data || {}
+  } else {
+    Taro.showToast({
+      icon: 'none',
+      title: res.message || '获取支付信息失败'
+    })
+  }
 }
 
+/**
+ * @function 获取支付方式
+ */
 async function getPayWays () {
   const [res] = await apis.getPayWays()
   if (res.status === 200) {
@@ -81,21 +97,18 @@ async function getPayWays () {
   }
 }
 
-async function getPayDetail () {
-  const [res] = await apis.getPayDetail({
-    product_id: data.payParams.product_id,
-    product_amount: data.payParams.product_amount
-  })
-  if (res.status === 200) {
-    data.payInfo = res.data || {}
-  } else {
-    Taro.showToast({
-      icon: 'none',
-      title: res.message || '获取支付信息失败'
-    })
-  }
+/**
+ * @function 切换支付方式
+ * @param {Object} item 目标支付方式信息
+ */
+ function changePayWay ({ pay_mode }) {
+  if (data.selectPay === pay_mode) return
+  data.selectPay = pay_mode
 }
 
+/**
+ * @function 确认支付
+ */
 async function confirmRecharge () {
   data.loading = true
   const [res] = await apis.getPayParams({
@@ -122,6 +135,10 @@ async function confirmRecharge () {
   toPay(res.data)
 }
 
+/**
+ * @function 开始支付
+ * @param {Object} item 支付参数
+ */
 async function toPay (params) {
   const [res, err] = await rechargePay(params)
   data.loading = false
@@ -129,7 +146,7 @@ async function toPay (params) {
     if (err.message) {
       Taro.showToast({
         icon: 'none',
-        title: err.message 
+        title: err.message
       })
     }
     return
