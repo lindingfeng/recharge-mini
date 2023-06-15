@@ -106,9 +106,8 @@ export default class BaseService {
   defaultResponseError (error) {
     this.hooks.onResponseError && this.hooks.onResponseError(error)
     let returnData = true
-    const status = error.status || error.statusCode
     Taro.hideLoading()
-    switch (status) {
+    switch (error.statusCode) {
       case 400:
         Taro.showToast({
           icon: 'none',
@@ -170,7 +169,7 @@ export default class BaseService {
       default: {
         Taro.showToast({
           icon: 'none',
-          title: `请求错误（错误码：${error.status || error.error || '-1'}）`
+          title: `请求错误（错误码：${error.statusCode || error.error || '-1'}）`
         })
         break;
       }
