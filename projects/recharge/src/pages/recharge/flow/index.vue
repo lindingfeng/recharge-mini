@@ -35,7 +35,7 @@
         title="后付费自定义金额"
         :input-attr="{
           type: 'digit',
-          readonly: !data.verifyInfo.is_valid,
+          disabled: !data.verifyInfo.is_valid,
           placeholder: `请输入金额（${rangeList[0].product_amount_currency}）`
         }"
         :recharge-tips="`金额范围：${rangeList[0].product_amount_min}-${rangeList[0].product_amount_max}，且必须为5的整数倍，否则充值失败。`"
