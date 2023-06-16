@@ -6,27 +6,24 @@
         class="recharge-base-traffic"
       >
         <recharge-traffic-cell
+          type="view"
           title="车辆属地"
-          disabled
-          readonly
           v-model="data.traffic.possession.name"
           :show-right-icon="true"
           placeholder="请选择车辆属地"
           @click="showActionSheet('possession')"
         />
         <recharge-traffic-cell
+          type="view"
           title="车辆类型"
-          disabled
-          readonly
           v-model="data.traffic.type.name"
           :show-right-icon="true"
           placeholder="请选择车辆类型"
           @click="showActionSheet('type')"
         />
         <recharge-traffic-cell
+          type="view"
           title="车牌编号"
-          disabled
-          readonly
           v-model="data.traffic.license.name"
           :show-right-icon="true"
           placeholder="请选择车牌编号"

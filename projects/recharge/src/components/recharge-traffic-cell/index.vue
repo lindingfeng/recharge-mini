@@ -4,7 +4,12 @@
     @click="$emit('click')"
   >
     <view class="recharge-traffic-title">{{ title }}</view>
+    <view v-if="type === 'view'" class="recharge-traffic-view-input">
+      <text v-if="$attrs.modelValue" class="recharge-traffic-input">{{ $attrs.modelValue }}</text>
+      <text v-else class="recharge-traffic-placeholder">{{ $attrs.placeholder || '' }}</text>
+    </view>
     <nut-input
+      v-else
       :border="false"
       v-bind="$attrs"
       placeholder-class="recharge-traffic-cell-placeholder"
@@ -25,6 +30,10 @@ export default {
 <script setup>
 
 defineProps({
+  type: {
+    type: String,
+    default: 'input'
+  },
   title: String,
   showRightIcon: {
     type: Boolean,
