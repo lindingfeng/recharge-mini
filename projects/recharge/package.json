@@ -63,7 +63,7 @@
 		"webpack-bundle-analyzer": "^4.8.0"
 	},
 	"browserslist": [
-		"chrome >= 51",
+		"chrome >= 37",
 		"iOS >= 10"
 	]
 }

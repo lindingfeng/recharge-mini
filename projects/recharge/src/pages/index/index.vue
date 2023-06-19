@@ -1,5 +1,13 @@
 <template>
   <view class="home-page">
+    <!-- <image
+      mode="widthFix"
+      src="https://s1.huishoubao.com/static/test/qqf-introduce-v2.png"
+      :style="{
+        width: '100%',
+        height: 'auto'
+      }"
+    /> -->
     <notice-bar
       v-if="baseCommonStore.messageNotice"
       :text="baseCommonStore.messageNotice"
