@@ -40,6 +40,7 @@ module.exports = {
   plugins: [
     // '@tarojs/plugin-vue-devtools',
     '@tarojs/plugin-html',
+    'plugin-taro-env',
     'taro-plugin-pinia'
   ],
   alias: {

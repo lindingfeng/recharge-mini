@@ -1,6 +1,7 @@
 <template>
   <view class="home-page">
     <!-- <image
+      taro-env="alipay"
       mode="widthFix"
       src="https://s1.huishoubao.com/static/test/qqf-introduce-v2.png"
       :style="{
@@ -8,27 +9,29 @@
         height: 'auto'
       }"
     /> -->
-    <notice-bar
-      v-if="baseCommonStore.messageNotice"
-      :text="baseCommonStore.messageNotice"
-    />
-    <view class="home-main">
-      <country-input-group
-        :list="baseCommonStore.countryList"
-        :loading="baseCommonStore.status.rechargeLoading"
+    <view>
+      <notice-bar
+        v-if="baseCommonStore.messageNotice"
+        :text="baseCommonStore.messageNotice"
       />
-      <recharge-category-group
-        :list="baseCommonStore.rechargeList"
-        :loading="baseCommonStore.status.rechargeLoading"
-        class="home-recharge"
-        @category="toRecharge"
-      />
-      <base-swiper
-        v-if="baseCommonStore.bannerList.length"
-        :height="Taro.pxTransform(120)"
-        :list="baseCommonStore.bannerList"
-        class="home-banner"
-      />
+      <view class="home-main">
+        <country-input-group
+          :list="baseCommonStore.countryList"
+          :loading="baseCommonStore.status.rechargeLoading"
+        />
+        <recharge-category-group
+          :list="baseCommonStore.rechargeList"
+          :loading="baseCommonStore.status.rechargeLoading"
+          class="home-recharge"
+          @category="toRecharge"
+        />
+        <base-swiper
+          v-if="baseCommonStore.bannerList.length"
+          :height="Taro.pxTransform(120)"
+          :list="baseCommonStore.bannerList"
+          class="home-banner"
+        />
+      </view>
     </view>
   </view>
 </template>

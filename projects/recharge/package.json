@@ -56,6 +56,7 @@
 		"eslint": "^6.8.0",
 		"eslint-config-taro": "3.6.8",
 		"eslint-plugin-vue": "^7.0.0",
+		"plugin-taro-env": "^0.2.0",
 		"postcss": "^8.4.1",
 		"stylelint": "9.3.0",
 		"unplugin-vue-components": "^0.24.1",

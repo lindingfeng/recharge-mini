@@ -9966,6 +9966,11 @@ please-upgrade-node@^3.2.0:
   dependencies:
     semver-compare "^1.0.0"
 
+plugin-taro-env@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmmirror.com/plugin-taro-env/-/plugin-taro-env-0.2.0.tgz#6cf52a1754c0522ee26e65d606a53ec65049e0d5"
+  integrity sha512-EkbBF7cGXzOdfwM8ASfzR+sHXU3qDWQLccxQwCiaU+ftp0AY76DvAm5Rfgi63WaIeBPA3IriDHMSfLtyECJTvA==
+
 portfinder@^1.0.26:
   version "1.0.32"
   resolved "https://registry.npmmirror.com/portfinder/-/portfinder-1.0.32.tgz#2fe1b9e58389712429dc2bea5beb2146146c7f81"
