@@ -33,5 +33,23 @@ export const envMap = {
     CLIENT: 'alipayMini',
     DEFAULT_NICKNAME: '支付宝用户',
     CODE_STRING: 'alipay_auth_code'
+  },
+  swan: {
+    DEVICE_TYPE: 3,
+    CLIENT: 'baiduMini',
+    DEFAULT_NICKNAME: '百度用户',
+    CODE_STRING: 'baidu_auth_code'
+  },
+  tt: {
+    DEVICE_TYPE: 4,
+    CLIENT: 'douyinMini',
+    DEFAULT_NICKNAME: '抖音用户',
+    CODE_STRING: 'douyin_auth_code'
+  },
+  qq: {
+    DEVICE_TYPE: 5,
+    CLIENT: 'qqMini',
+    DEFAULT_NICKNAME: 'QQ用户',
+    CODE_STRING: 'qq_auth_code'
   }
 }
