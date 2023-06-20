@@ -58,6 +58,13 @@ module.exports = {
     }
   },
   framework: 'vue3',
+  compiler: {
+    type: 'webpack5',
+    prebundle: {
+      // 设置true开发模式会报错 https://github.com/NervJS/taro/issues/13456
+      enable: false
+    }
+  },
   mini: {
     postcss: {
       url: {
