@@ -1,14 +1,5 @@
 <template>
   <view class="home-page">
-    <!-- <image
-      taro-env="alipay"
-      mode="widthFix"
-      src="https://s1.huishoubao.com/static/test/qqf-introduce-v2.png"
-      :style="{
-        width: '100%',
-        height: 'auto'
-      }"
-    /> -->
     <view>
       <notice-bar
         v-if="baseCommonStore.messageNotice"

@@ -4,7 +4,6 @@
 	"private": true,
 	"project": "recharge",
 	"projectName": "全酋付",
-	"outputRoot": "recharge",
 	"author": "lindingfeng",
 	"description": "recharge main miniprogram",
 	"templateInfo": {

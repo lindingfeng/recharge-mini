@@ -3,21 +3,27 @@ const package = require(`${process.cwd()}/package.json`)
 const ComponentsPlugin = require('unplugin-vue-components/webpack')
 const NutUIResolver = require('@nutui/nutui-taro/dist/resolver')
 
-const projectRootDir = path.resolve(__dirname, '..', 'projects', package.outputRoot)
+const projectRootDir = process.cwd()
+
+const buildTarget = process.env.TARO_ENV
+
+const projectsDir = path.join(__dirname, '..', 'projects', './')
+
+const projectDirName = projectRootDir.replace(projectsDir, '')
 
 const patterns = []
 
-if (process.env.TARO_ENV === 'weapp') {
+if (buildTarget === 'weapp') {
   patterns.push({
-    from: `${projectRootDir}/sitemap.json`,
-    to: path.resolve(__dirname, '..', 'build', process.env.TARO_ENV, package.outputRoot, './sitemap.json')
+    from: path.resolve(projectRootDir, 'sitemap.json'),
+    to: path.resolve(__dirname, '..', 'build', projectDirName, buildTarget, './sitemap.json')
   })
 }
 
-if (process.env.TARO_ENV === 'alipay') {
+if (buildTarget === 'alipay') {
   patterns.push({
-    from: `${projectRootDir}/mini.project.json`,
-    to: path.resolve(__dirname, '..', 'build', process.env.TARO_ENV, package.outputRoot, './mini.project.json')
+    from: path.resolve(projectRootDir, 'mini.project.json'),
+    to: path.resolve(__dirname, '..', 'build', projectDirName, buildTarget, './mini.project.json')
   })
 }
 
@@ -34,9 +40,8 @@ module.exports = {
     VUE_APP_PROJECT: `"${package.project}"`
   },
   sourceRoot: 'src',
-  // outputRoot: path.resolve(__dirname, '..', 'dist', package.outputRoot),
   // Taro内部应该使用path处理outputRoot，所以配置绝对路径会报错，暂时先用相对路径，相对于启动目录
-  outputRoot: `../../build/${process.env.TARO_ENV}/${package.outputRoot}`,
+  outputRoot: `../../build/${projectDirName}/${buildTarget}`,
   plugins: [
     // '@tarojs/plugin-vue-devtools',
     '@tarojs/plugin-html',
@@ -44,8 +49,8 @@ module.exports = {
     'taro-plugin-pinia'
   ],
   alias: {
-    '@global': path.resolve(__dirname, '../'),
-    '@': path.resolve(__dirname, '..', 'projects', package.outputRoot, 'src')
+    '@global': path.resolve(__dirname, '..'),
+    '@': path.resolve(projectRootDir, 'src')
   },
   sass: {
     data: `@import "@nutui/nutui-taro/dist/styles/variables.scss";`,
@@ -90,7 +95,7 @@ module.exports = {
     webpackChain(chain) {
       // fix: 支付宝小程序报错Cannot read properties of null (reading 'addEventListener')
       // doc: https://github.com/NervJS/taro/issues/12420
-      if (process.env.TARO_ENV === 'alipay') {
+      if (buildTarget === 'alipay') {
         chain.merge({
           module: {
             rule: [
@@ -112,7 +117,7 @@ module.exports = {
           //   // if (componentName.startsWith('Van'))
           //   // return { name: componentName.slice(3), from: 'vant' }
           // },
-          NutUIResolver({taro: true})
+          NutUIResolver({ taro: true })
         ]
       }))
     }
@@ -144,7 +149,7 @@ module.exports = {
       // 按需加载
       chain.plugin('unplugin-vue-components').use(ComponentsPlugin({
         resolvers: [
-          NutUIResolver({taro: true})
+          NutUIResolver({ taro: true })
         ]
       }))
     }
