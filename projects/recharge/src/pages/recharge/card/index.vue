@@ -107,7 +107,7 @@ async function getExamples () {
     country_iso3: query.iso3
   })
 
-  if (!ExampleRes.status === 200 || !ExampleRes.data.phone_number) return
+  if (!ExampleRes.status === 200 || !ExampleRes.data?.phone_number) return
 
   data.exampleInfo = ExampleRes.data || {}
 

@@ -1973,7 +1973,7 @@
     webpack-chain "6.5.1"
     webpack-virtual-modules "^0.5.0"
 
-"@tarojs/webpack5-runner@^3.6.8":
+"@tarojs/webpack5-runner@3.6.8":
   version "3.6.8"
   resolved "https://registry.npmmirror.com/@tarojs/webpack5-runner/-/webpack5-runner-3.6.8.tgz#3a4be78d575243a5d81e2ad6c793c08b37695261"
   integrity sha512-aTRhb62LnY9orD5ggZaf+pVj+Y5z95yg9vUlCEqpPjzYZTz4LaxYnqG0f9i+RmrHSORPIkk4nb7lVTF9CcUXLg==
