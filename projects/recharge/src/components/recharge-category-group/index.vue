@@ -20,7 +20,7 @@
     </view>
     <view v-else class="recharge-category-no-data">
       <view class="no-data">
-        <image class="icon-no-data" src="@global/assets/imgs/common/icon_nodata.png" />
+        <image class="icon-no-data" src="@/assets/imgs/common/icon_nodata.png" />
         <view class="no-data-text">暂无服务</view>
       </view>
     </view>

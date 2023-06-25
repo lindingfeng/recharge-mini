@@ -1,7 +1,7 @@
 <template>
   <view class="no-data-component">
     <view class="no-data-content">
-      <image class="icon-null" src="@global/assets/imgs/common/icon_nodata.png" />
+      <image class="icon-null" src="@/assets/imgs/common/icon_nodata.png" />
       <view class="null-text">{{ text }}</view>
     </view>
   </view>
