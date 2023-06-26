@@ -40,8 +40,7 @@ module.exports = {
     VUE_APP_PROJECT: `"${package.project}"`
   },
   sourceRoot: 'src',
-  // Taro内部应该使用path处理outputRoot，所以配置绝对路径会报错，暂时先用相对路径，相对于启动目录
-  outputRoot: `../../build/${projectDirName}/${buildTarget}`,
+  outputRoot: path.resolve(__dirname, '..', 'build', projectDirName, buildTarget),
   plugins: [
     // '@tarojs/plugin-vue-devtools',
     '@tarojs/plugin-html',
