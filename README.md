@@ -8,32 +8,32 @@ node >= 16
 
 ### 安装
 ```
-yarn install --registry=https://registry.npm.taobao.org
+pnpm install
 ```
 
 ### 开发
 ```
 # 支付宝小程序
-yarn dev:recharge-alipay
+pnpm dev:recharge-alipay
 
 # 微信小程序
-yarn dev:recharge-weapp
+pnpm dev:recharge-weapp
 ```
 
 ### 构建
 ```
 # 支付宝小程序
-yarn build:recharge-alipay
+pnpm build:recharge-alipay
 
 # 微信小程序
-yarn build:recharge-weapp
+pnpm build:recharge-weapp
 ```
 
 ### 预览
 ```
 # 支付宝小程序
-将build/alipay/recharge文件夹导入支付宝开发工具即可
+将build/recharge/alipay文件夹导入支付宝开发工具即可
 
 # 微信小程序
-将build/weapp/recharge文件夹导入微信开发工具即可
+将build/recharge/weapp文件夹导入微信开发工具即可
 ```
