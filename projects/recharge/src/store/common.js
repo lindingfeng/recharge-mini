@@ -33,7 +33,7 @@ export const useCommonStore = defineStore('common', {
       const [res] = await apis.getMessageNotice()
       if (res.status === 200) {
         this.status.messageLoaded = true
-        this.messageNotice = res.data.notice || ''
+        this.messageNotice = res.data?.notice || ''
       }
     },
     /**
