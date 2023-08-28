@@ -34,7 +34,7 @@ import { useGlobalUserStore } from '@global/common/store/user'
 import CountryInputGroup from '@/components/country-input-group'
 import RechargeCategoryGroup from '@/components/recharge-category-group'
 import BaseSwiper from '@global/components/base-swiper'
-import Taro, { useDidShow } from '@tarojs/taro'
+import Taro, { useDidShow, useShareAppMessage, useShareTimeline } from '@tarojs/taro'
 
 const globalUserStore = useGlobalUserStore()
 
@@ -61,6 +61,10 @@ function toRecharge (item) {
     Taro.navigateTo({ url: `${navigateMap[item.service_id]}?${querys}` })
   }
 }
+
+useShareAppMessage()
+
+useShareTimeline()
 
 useDidShow(async () => {
   if (!globalUserStore.userInfo.token) {
