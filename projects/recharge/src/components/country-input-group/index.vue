@@ -36,12 +36,12 @@
         v-if="inputs"
         :value="inputs"
         :list="baseCommonStore.countryList"
-        @country="selectCountry"
+        @country="chooseCountry"
       />
       <country-infinite-list
         v-else
         :list="baseCommonStore.countryList"
-        @country="selectCountry"
+        @country="chooseCountry"
       />
     </view>
   </view>
@@ -85,7 +85,7 @@ function searchCountry (show = false) {
   data.countryVisible = !data.countryVisible
 }
 
-function selectCountry (item) {
+function chooseCountry (item) {
   const selectCountry =  item || {}
   baseCommonStore.selectCountry = selectCountry
   data.countryVisible = false

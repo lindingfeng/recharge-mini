@@ -1,20 +1,17 @@
 <template>
   <view class="country-list-component">
-    <view
-      class="country-list"
-      @click="selectCountry"
-    >
+    <view class="country-list">
       <view
-        v-for="(item, index) in list"
+        v-for="item in list"
         :key="item.iso3"
         class="country-item"
+        @click="selectCountry(item)"
       >
         <image
           :src="item.icon_url"
           class="country-image"
         />
         <text class="country-name">{{ item.name_zh }}</text>
-        <view class="country-item-mask" :data-index="index"></view>
       </view>
     </view>
   </view>
@@ -34,9 +31,8 @@ const props = defineProps({
 
 const emits = defineEmits(['country'])
 
-function selectCountry (e) {
-  const countryInfo = props.list[e.target.dataset.index] || {}
-  emits('country', countryInfo)
+function selectCountry (item) {
+  emits('country', item)
 }
 
 </script>

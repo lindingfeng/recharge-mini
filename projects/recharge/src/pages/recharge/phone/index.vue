@@ -10,6 +10,7 @@
         @operator="getOperatorList"
       />
       <recharge-base-group
+        v-if="showRechargeList"
         title="充值金额"
       >
         <phone-amount-list
@@ -32,7 +33,7 @@
       <recharge-custom-group
         v-if="rangeList.length"
         v-model:input="data.rechargeValue"
-        title="后付费自定义金额"
+        :title="isARE ? '后付费自定义金额' : '自定义金额'"
         :right-text="data.verifyInfo.is_valid ? '查询余额' : ''"
         :input-attr="{
           type: 'digit',
@@ -47,7 +48,7 @@
         @recharge="confirmRecharge"
       >
         <template #recharge-tips>
-          <view class="recharge-tips">*仅后付费账号可用</view>
+          <view v-if="isARE" class="recharge-tips">*仅后付费账号可用</view>
         </template>
       </recharge-custom-group>
       <recharge-prompt-group>
@@ -72,7 +73,7 @@
     >
       <template #body-content>
         <view class="recharge-account-content">
-          <view class="recharge-account-title">此后付费账户余额为</view>
+          <view class="recharge-account-title">此{{ isARE ? '后付费' : '' }}账户余额为</view>
           <view class="recharge-account-money">{{ data.balanceInfo.balance }} {{ rangeList[0] ? rangeList[0].product_amount_currency : '' }}</view>
         </view>
       </template>
@@ -82,6 +83,7 @@
 
 <script setup>
 import only from 'only'
+import { computed } from 'vue'
 import Taro, { useLoad } from '@tarojs/taro'
 import { phoneRecharge } from '@/composables/recharge'
 import BaseButton from '@global/components/base-button'
@@ -104,6 +106,7 @@ const {
   allowRecharge,
   amountList,
   rangeList,
+  showRechargeList,
   getLatestOrder,
   getOperators,
   getPhoneExample,
@@ -112,6 +115,8 @@ const {
   queryBalance,
   removeFailureInfo
 } = phoneRecharge()
+
+const isARE = computed(() => query.iso3 === 'ARE')
 
 async function getExamples () {
   const [orderRes] = await getLatestOrder({
@@ -135,7 +140,7 @@ async function getExamples () {
     is_init: 1,
     country_iso2: query.iso2,
     phone_number: data.phone || ExampleRes.data.phone_number,
-    service_id: query.service_id,
+    service_id: query.service_id
   })
 
   if (!checkRes.status === 200 || !checkRes.data.operator_id || !checkRes.data.is_valid) return

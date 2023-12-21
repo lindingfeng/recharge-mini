@@ -59,6 +59,10 @@ export function phoneRecharge () {
     return data.rechargeInfo.range_amounts || []
   })
 
+  const showRechargeList = computed(() => {
+    return amountList.value.length || (amountList.value.length === 0 && rangeList.value.length === 0)
+  })
+
   const removeFailureInfo = (info = {}) => {
     data.verifyInfo = info
     data.rechargeIdx = ''
@@ -70,6 +74,7 @@ export function phoneRecharge () {
     allowRecharge,
     amountList,
     rangeList,
+    showRechargeList,
     getLatestOrder,
     getPhoneExample,
     checkAccount,

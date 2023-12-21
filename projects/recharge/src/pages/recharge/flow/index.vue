@@ -10,6 +10,7 @@
         @operator="getOperatorList"
       />
       <recharge-base-group
+        v-if="showRechargeList"
         title="充值金额"
       >
         <flow-amount-list
@@ -32,7 +33,7 @@
       <recharge-custom-group
         v-if="rangeList.length"
         v-model:input="data.rechargeValue"
-        title="后付费自定义金额"
+        :title="isARE ? '后付费自定义金额' : '自定义金额'"
         :input-attr="{
           type: 'digit',
           disabled: !data.verifyInfo.is_valid,
@@ -65,6 +66,7 @@
 
 <script setup>
 import only from 'only'
+import { computed } from 'vue'
 import Taro, { useLoad } from '@tarojs/taro'
 import { phoneRecharge } from '@/composables/recharge'
 import BaseButton from '@global/components/base-button'
@@ -86,6 +88,7 @@ const {
   allowRecharge,
   amountList,
   rangeList,
+  showRechargeList,
   getLatestOrder,
   getOperators,
   getPhoneExample,
@@ -93,6 +96,8 @@ const {
   getProducts,
   removeFailureInfo
 } = phoneRecharge()
+
+const isARE = computed(() => query.iso3 === 'ARE')
 
 async function getExamples () {
   const [orderRes] = await getLatestOrder({

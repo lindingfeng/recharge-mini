@@ -18,7 +18,7 @@
     "build:recharge-swan": "pnpm --filter=./projects/recharge build:swan",
     "build:recharge-weapp": "pnpm --filter=./projects/recharge build:weapp",
     "build:recharge-alipay": "pnpm --filter=./projects/recharge build:alipay",
-    "build:main": "pnpm build:recharge-alipay && pnpm build:recharge-weapp && pnpm build:recharge-h5",
+    "build:main": "pnpm build:recharge-alipay && pnpm build:recharge-weapp",
     "build:all": "pnpm build:recharge-alipay && pnpm build:recharge-weapp && pnpm build:recharge-h5 && pnpm build:recharge-tt && pnpm build:recharge-qq && pnpm build:recharge-jd && pnpm build:recharge-swan"
   },
   "dependencies": {
