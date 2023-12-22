@@ -174,6 +174,7 @@ async function getAmountList (item = {}, type = 'action') {
   })
   data.productLoading = false
   data.rechargeIdx = ''
+  data.rechargeValue = ''
   if (res.status === 200) {
     data.rechargeInfo = res.data || {}
   } else {
